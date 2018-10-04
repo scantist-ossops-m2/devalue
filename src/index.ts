@@ -1,17 +1,20 @@
+const consola = require('consola')
 const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$';
 const reserved = /^(?:do|if|in|for|int|let|new|try|var|byte|case|char|else|enum|goto|long|this|void|with|await|break|catch|class|const|final|float|short|super|throw|while|yield|delete|double|export|import|native|return|switch|throws|typeof|boolean|default|extends|finally|package|private|abstract|continue|debugger|function|volatile|interface|protected|transient|implements|instanceof|synchronized)$/;
 const unsafe = /[<>\/\u2028\u2029]/g;
 const escaped: Record<string, string> = { '<': '\\u003C', '>' : '\\u003E', '/': '\\u002F', '\u2028': '\\u2028', '\u2029': '\\u2029' };
 const objectProtoOwnPropertyNames = Object.getOwnPropertyNames(Object.prototype).sort().join('\0');
 
-export default function devalue(value: any) {
+
+export default function devalue(value: any, level = 'warn') {
 	const counts = new Map();
 
 	let n = 0;
 
 	function walk(thing: any) {
 		if (typeof thing === 'function') {
-			throw new Error(`Cannot stringify a function`);
+			consola[level](`Cannot stringify a function ${thing.name}`)
+			return
 		}
 
 		if (counts.has(thing)) {
@@ -49,14 +52,15 @@ export default function devalue(value: any) {
 						proto !== null &&
 						Object.getOwnPropertyNames(proto).sort().join('\0') !== objectProtoOwnPropertyNames
 					) {
-						throw new Error(`Cannot stringify arbitrary non-POJOs`);
+						if (typeof thing.toJSON !== "function") {
+							consola[level](`Cannot stringify arbitrary non-POJOs ${thing.constructor.name}`);
+						}
+					} else if (Object.getOwnPropertySymbols(thing).length > 0) {
+						consola[level](`Cannot stringify POJOs with symbolic keys ${Object.getOwnPropertySymbols(thing)}`);
+					} else {
+						Object.keys(thing).forEach(key => walk(thing[key]));
 					}
 
-					if (Object.getOwnPropertySymbols(thing).length > 0) {
-						throw new Error(`Cannot stringify POJOs with symbolic keys`);
-					}
-
-					Object.keys(thing).forEach(key => walk(thing[key]));
 			}
 		}
 	}
@@ -105,10 +109,11 @@ export default function devalue(value: any) {
 				return `new ${type}([${Array.from(thing).map(stringify).join(',')}])`;
 
 			default:
-				const obj = `{${Object.keys(thing).map(key => `${safeKey(key)}:${stringify(thing[key])}`).join(',')}}`;
-				const proto = Object.getPrototypeOf(thing);
+				const thingToSerialize = thing.toJSON ? thing.toJSON() : thing;
+				const obj = `{${Object.keys(thingToSerialize).map(key => `${safeKey(key)}:${stringify(thingToSerialize[key])}`).join(',')}}`;
+				const proto = Object.getPrototypeOf(thingToSerialize);
 				if (proto === null) {
-					return Object.keys(thing).length > 0
+					return Object.keys(thingToSerialize).length > 0
 						? `Object.assign(Object.create(null),${obj})`
 						: `Object.create(null)`;
 				}
