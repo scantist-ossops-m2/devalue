@@ -2,8 +2,6 @@
 
 Forked from  [devalue](https://github.com/Rich-Harris/devalue) to log errors on non serializable properties rather than Error. And added support for objects with toJSON methods
 
-
-
 Like `JSON.stringify`, but handles
 
 * cyclical references (`obj.self = obj`)
@@ -12,6 +10,7 @@ Like `JSON.stringify`, but handles
 * regular expressions
 * dates
 * `Map` and `Set`
+* `.toJSON()` method for non-POJOs
 
 Try it out on [runkit.com](https://npm.runkit.com/@nuxtjs/devalue).
 
@@ -25,7 +24,7 @@ Try it out on [runkit.com](https://npm.runkit.com/@nuxtjs/devalue).
 ## Non-goals:
 
 * Human-readable output
-* Stringifying functions or non-POJOs
+* Stringifying functions or arbritary non-POJOs
 
 
 ## Usage
