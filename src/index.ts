@@ -79,7 +79,6 @@ export default function devalue(value: any, level = defaultLogLevel) {
 	walk(value);
 
 	const names = new Map();
-
 	Array.from(counts)
 		.filter(entry => entry[1] > 1)
 		.sort((a, b) => b[1] - a[1])
@@ -120,12 +119,21 @@ export default function devalue(value: any, level = defaultLogLevel) {
 				return `new ${type}([${Array.from(thing).map(stringify).join(',')}])`;
 
 			default:
-				const thingToSerialize = thing.toJSON ? thing.toJSON() : thing;
-				const obj = `{${Object.keys(thingToSerialize).map(key => `${safeKey(key)}:${stringify(thingToSerialize[key])}`).join(',')}}`;
-				const proto = Object.getPrototypeOf(thingToSerialize);
+				if (thing.toJSON) {
+					let json = thing.toJSON();
+					if (getType(json) === 'String') {
+						// Try to parse the returned data
+						try {
+							json = JSON.parse(json)
+						} catch (e) {};
+					}
+					return stringify(json);
+				}
+				const obj = `{${Object.keys(thing).map(key => `${safeKey(key)}:${stringify(thing[key])}`).join(',')}}`;
+				const proto = Object.getPrototypeOf(thing);
 				if (proto === null) {
-					return Object.keys(thingToSerialize).length > 0
-						? `Object.assign(Object.create(null),${obj})`
+					return Object.keys(thing).length > 0
+						? `Object.assign(Object.create(null), ${obj})`
 						: `Object.create(null)`;
 				}
 
