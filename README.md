@@ -1,4 +1,4 @@
-# @nuxtjs/devalue
+# @nuxt/devalue
 
 Forked from [devalue](https://github.com/Rich-Harris/devalue) to log errors on non-serializable properties rather than throwing `Error`.
 
@@ -12,7 +12,7 @@ Like `JSON.stringify`, but handles
 * `Map` and `Set`
 * `.toJSON()` method for non-POJOs
 
-Try it out on [runkit.com](https://npm.runkit.com/@nuxtjs/devalue).
+Try it out on [runkit.com](https://npm.runkit.com/@nuxt/devalue).
 
 ## Goals:
 
@@ -30,7 +30,7 @@ Try it out on [runkit.com](https://npm.runkit.com/@nuxtjs/devalue).
 ## Usage
 
 ```js
-import devalue from '@nuxtjs/devalue';
+import devalue from '@nuxt/devalue';
 
 let obj = { a: 1, b: 2 };
 obj.c = 3;
