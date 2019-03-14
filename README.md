@@ -127,17 +127,17 @@ Using `new Function(code)` is akin to using indirect eval.
 [LIL](LICENSE)
 
 <!-- Refs -->
-[npm-version-src]: https://flat.badgen.net/npm/v/@nuxtjs/devalue/latest
-[npm-version-href]: https://npmjs.com/package/@nuxtjs/devalue
+[npm-version-src]: https://flat.badgen.net/npm/v/@nuxt/devalue/latest
+[npm-version-href]: https://www.npmjs.com/package/@nuxt/devalue
 
-[npm-downloads-src]: https://flat.badgen.net/npm/dm/@nuxtjs/devalue
-[npm-downloads-href]: https://npmjs.com/package/@nuxtjs/devalue
+[npm-downloads-src]: https://flat.badgen.net/npm/dm/@nuxt/devalue
+[npm-downloads-href]: https://www.npmjs.com/package/@nuxt/devalue
 
 [circleci-src]: https://flat.badgen.net/circleci/github/nuxt/devalue
 [circleci-href]: https://circleci.com/gh/nuxt/devalue
 
-[package-phobia-src]: https://flat.badgen.net/packagephobia/install/@nuxtjs/devalue
-[package-phobia-href]: https://packagephobia.now.sh/result?p=@nuxtjs/devalue
+[package-phobia-src]: https://flat.badgen.net/packagephobia/install/@nuxt/devalue
+[package-phobia-href]: https://packagephobia.now.sh/result?p=@nuxt/devalue
 
-[bundle-phobia-src]: https://flat.badgen.net/bundlephobia/minzip/@nuxtjs/devalue
-[bundle-phobia-href]: https://bundlephobia.com/result?p=@nuxtjs/devalue
+[bundle-phobia-src]: https://flat.badgen.net/bundlephobia/minzip/@nuxt/devalue
+[bundle-phobia-href]: https://bundlephobia.com/result?p=@nuxt/devalue
