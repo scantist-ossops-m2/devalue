@@ -1,16 +1,23 @@
 {
   "name": "@nuxt/devalue",
-  "description": "Gets the job done when JSON.stringify can't",
   "version": "1.2.3",
+  "description": "Gets the job done when JSON.stringify can't",
   "repository": "nuxt-community/devalue",
-  "main": "dist/devalue.cjs.js",
-  "module": "dist/devalue.esm.js",
-  "browser": "dist/devalue.js",
-  "types": "types/index.d.ts",
+  "license": "MIT",
   "files": [
     "dist",
     "types"
   ],
+  "main": "dist/devalue.cjs.js",
+  "module": "dist/devalue.esm.js",
+  "browser": "dist/devalue.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "build": "npm run build-declarations && rollup -c",
+    "build-declarations": "tsc -d && node scripts/move-type-declarations.js",
+    "prepublishOnly": "npm run build && npm test",
+    "test": "mocha --opts mocha.opts"
+  },
   "dependencies": {
     "consola": "^2.5.6"
   },
@@ -26,12 +33,5 @@
     "ts-node": "^8.0.2",
     "tslib": "^1.9.3",
     "typescript": "^3.3.3333"
-  },
-  "scripts": {
-    "build-declarations": "tsc -d && node scripts/move-type-declarations.js",
-    "build": "npm run build-declarations && rollup -c",
-    "test": "mocha --opts mocha.opts",
-    "prepublishOnly": "npm run build && npm test"
-  },
-  "license": "LIL"
+  }
 }
