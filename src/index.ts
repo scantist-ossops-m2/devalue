@@ -1,4 +1,3 @@
-const consola = require('consola')
 const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_$';
 const unsafeChars = /[<>\b\f\n\r\t\0\u2028\u2029]/g;
 const reserved = /^(?:do|if|in|for|int|let|new|try|var|byte|case|char|else|enum|goto|long|this|void|with|await|break|catch|class|const|final|float|short|super|throw|while|yield|delete|double|export|import|native|return|switch|throws|typeof|boolean|default|extends|finally|package|private|abstract|continue|debugger|function|volatile|interface|protected|transient|implements|instanceof|synchronized)$/;
@@ -17,27 +16,21 @@ const escaped: Record<string, string> = {
 	'\u2029': '\\u2029'
 };
 const objectProtoOwnPropertyNames = Object.getOwnPropertyNames(Object.prototype).sort().join('\0');
-// workaround to disable warnings, see https://github.com/nuxt/nuxt.js/issues/4026 for details
-const defaultLogLevel = typeof process !== 'undefined' ? process.env.NUXT_ENV_DEVALUE_LOG_LEVEL || 'warn' : 'warn';
-const logLimit = typeof process !== 'undefined' ? parseInt(process.env.NUXT_ENV_DEVALUE_LOG_LIMIT) || 99 : 99;
-
-
-export default function devalue(value: any, level = defaultLogLevel) {
+export default function devalue(value: any) {
 	const counts = new Map();
 
 	let logNum = 0;
 
 	function log(message: string) {
-		if (logNum < logLimit) {
-			consola[level](message);
+		if (logNum < 100) {
+			console.warn(message);
 			logNum+=1
 		}
 	}
 
-
 	function walk(thing: any) {
 		if (typeof thing === 'function') {
-			consola[level](`Cannot stringify a function ${thing.name}`)
+			log(`Cannot stringify a function ${thing.name}`)
 			return
 		}
 
