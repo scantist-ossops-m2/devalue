@@ -133,8 +133,8 @@ Using `new Function(code)` is akin to using indirect eval.
 [npm-downloads-src]: https://flat.badgen.net/npm/dm/@nuxt/devalue
 [npm-downloads-href]: https://www.npmjs.com/package/@nuxt/devalue
 
-[circleci-src]: https://flat.badgen.net/circleci/github/nuxt/devalue
-[circleci-href]: https://circleci.com/gh/nuxt/devalue
+[circleci-src]: https://flat.badgen.net/circleci/github/nuxt-contrib/devalue
+[circleci-href]: https://circleci.com/gh/nuxt-contrib/devalue
 
 [package-phobia-src]: https://flat.badgen.net/packagephobia/install/@nuxt/devalue
 [package-phobia-href]: https://packagephobia.now.sh/result?p=@nuxt/devalue
@@ -142,5 +142,5 @@ Using `new Function(code)` is akin to using indirect eval.
 [bundle-phobia-src]: https://flat.badgen.net/bundlephobia/minzip/@nuxt/devalue
 [bundle-phobia-href]: https://bundlephobia.com/result?p=@nuxt/devalue
 
-[codecov-src]: https://flat.badgen.net/codecov/c/github/nuxt/devalue/master
-[codecov-href]: https://codecov.io/gh/nuxt/devalue
+[codecov-src]: https://flat.badgen.net/codecov/c/github/nuxt-contrib/devalue/master
+[codecov-href]: https://codecov.io/gh/nuxt-contrib/devalue
