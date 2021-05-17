@@ -2,7 +2,7 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![Circle CI][circleci-src]][circleci-href]
+[![codecov][codecov-src]][codecov-href]
 [![package phobia][package-phobia-src]][package-phobia-href]
 [![bundle phobia][bundle-phobia-src]][bundle-phobia-href]
 
@@ -141,3 +141,6 @@ Using `new Function(code)` is akin to using indirect eval.
 
 [bundle-phobia-src]: https://flat.badgen.net/bundlephobia/minzip/@nuxt/devalue
 [bundle-phobia-href]: https://bundlephobia.com/result?p=@nuxt/devalue
+
+[codecov-src]: https://flat.badgen.net/codecov/c/github/nuxt/devalue/master
+[codecov-href]: https://codecov.io/gh/nuxt/devalue
