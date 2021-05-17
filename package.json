@@ -2,33 +2,31 @@
   "name": "@nuxt/devalue",
   "version": "1.2.5",
   "description": "Gets the job done when JSON.stringify can't",
-  "repository": "nuxt-community/devalue",
+  "repository": "nuxt/devalue",
   "license": "MIT",
+  "exports": {
+    ".": {
+      "require": "./dist/devalue.js",
+      "import": "./dist/devalue.mjs"
+    }
+  },
+  "main": "./dist/devalue.js",
+  "module": "./dist/devalue.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "types"
+    "dist"
   ],
-  "main": "dist/devalue.cjs.js",
-  "module": "dist/devalue.esm.js",
-  "browser": "dist/devalue.js",
-  "types": "types/index.d.ts",
   "scripts": {
-    "build": "npm run build-declarations && rollup -c",
-    "build-declarations": "tsc -d && node scripts/move-type-declarations.js",
-    "prepublishOnly": "npm run build && npm test",
+    "build": "siroc build",
+    "prepack": "yarn build",
     "test": "mocha --opts mocha.opts"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.6",
-    "@types/node": "^12.0.10",
-    "glob": "^7.1.3",
-    "mocha": "^6.0.2",
-    "rollup": "^1.3.2",
-    "rollup-plugin-typescript": "^1.0.0",
-    "rollup-plugin-virtual": "^1.0.1",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.3.0",
+    "mocha": "^8.4.0",
     "sander": "^0.6.0",
-    "ts-node": "^8.0.2",
-    "tslib": "^1.9.3",
-    "typescript": "^3.3.3333"
+    "siroc": "^0.10.0",
+    "typescript": "^4.2.4"
   }
 }
