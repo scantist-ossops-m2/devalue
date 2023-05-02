@@ -16,7 +16,7 @@ const escaped: Record<string, string> = {
   '\u2029': '\\u2029'
 }
 const objectProtoOwnPropertyNames = Object.getOwnPropertyNames(Object.prototype).sort().join('\0')
-export default function devalue (value: any) {
+export default function devalue (value: any): string {
   const counts = new Map()
 
   let logNum = 0
