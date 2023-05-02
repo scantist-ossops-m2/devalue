@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/nuxt-contrib/devalue/compare/v2.0.0...v2.0.1) (2023-05-02)
+
+
+### Bug Fixes
+
+* add type subpath export ([#21](https://github.com/nuxt-contrib/devalue/issues/21)) ([293e260](https://github.com/nuxt-contrib/devalue/commit/293e2606cd92447e2e280895b391a90db4e83c75))
+
 ## [2.0.0](https://github.com/nuxt-contrib/devalue/compare/v2.0.0-0...v2.0.0) (2021-07-12)
 
 ## [2.0.0-0](https://github.com/nuxt-contrib/devalue/compare/v1.2.4...v2.0.0-0) (2021-05-17)
