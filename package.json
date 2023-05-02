@@ -2,7 +2,7 @@
   "name": "@nuxt/devalue",
   "version": "2.0.1",
   "description": "Gets the job done when JSON.stringify can't",
-  "repository": "nuxt-contrib/devalue",
+  "repository": "nuxt/devalue",
   "license": "MIT",
   "exports": {
     ".": {
